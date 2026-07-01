@@ -40,4 +40,19 @@ def search(storage):
     else:
         print("there is no web like that")
         
-    return storage        
+    return storage 
+
+def delete(storage):
+    delete_web=input("input the web password u want to delete")
+    if delete_web in storage["password"]:
+        for delete_web in storage["password"]:
+            delete={
+                "website":delete_web["website"],
+                "user":delete_web["user"],
+                "password":delete_web["password"]
+                    }
+        storage["password"].clear(delete)
+    else:
+        print("no website like that")
+        
+    return storage
