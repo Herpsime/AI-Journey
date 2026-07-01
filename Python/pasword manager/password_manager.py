@@ -56,3 +56,37 @@ def delete(storage):
         print("no website like that")
         
     return storage
+
+"""def update(storage):
+    web=input("the web you want to update")
+    up_web = input("enter what you want to update about web if you don't want to update leave a space")
+    up_user = input("enter what you want to update about user if you don't want to update leave a space")
+    up_password = input("enter what you want to update about password if you don't want to update leave a space")
+    updated = {
+        "website":up_web,
+        "user":up_user,
+        "password":up_password
+    }
+    for i in storage["password"]:
+        if i["website"] == web:
+            
+         return storage  """ 
+            
+while true:
+    choice = int(input("what do you want to do \n 1.add \n 2. search \n 3. delete \n 4. update "))
+
+    match choice:
+        case 1:
+            current_storage=add(storage)
+        case 2:
+            current_storage=search(current_storage)
+        case 3:
+            current_storage=delete(current_storage)
+        case 4:
+            current_storage=update(current_storage)
+        case _:
+          print("invalid value")
+          
+    opt = input("do you want to do it again y/n").lower()
+    opt != "y"
+    print("exiting password manager system")
