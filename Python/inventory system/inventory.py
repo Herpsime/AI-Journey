@@ -85,4 +85,19 @@ def search_product():
         print(f"   Price: ${inventory[name]['price']:.2f}")
         print(f"   Stock: {inventory[name]['quantity']} units")
     else:
-        print(" product not found.")
+        print(" product not found")
+        
+def calculate_total_value():
+    if not inventory:
+        print("Your inventory is currently empty.")
+        return
+        
+    total_value = 0.0
+    for name in inventory:
+        price = inventory[name]["price"]
+        qty = inventory[name]["quantity"]
+        item_value = price * qty
+        total_value += item_value
+        print(f"• {name}: {qty} units x ${price:.2f} = ${item_value:.2f}")
+   
+    print(f"TOTAL VALUE: ${total_value:.2f}")
