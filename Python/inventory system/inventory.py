@@ -54,3 +54,23 @@ def sell_product():
     except ValueError:
         print("invalid value")
         
+def restock_product():
+    name = input("Enter product name to restock: ").strip()
+    if name:
+        name = name[0].upper() + name[1:].lower()
+        
+    if name not in inventory:
+        print("product not found Add it first.")
+        return
+        
+    qty_input = input("Enter amount to add: ")
+    try:
+        additional_qty = int(qty_input)
+        if additional_qty <= 0:
+            print("must add at least 1 unit")
+            return
+            
+        inventory[name]["quantity"] += additional_qty
+        print(f"Restocked  new quantity: {inventory[name]['quantity']}")
+    except ValueError:
+        print("invalid number entered")
