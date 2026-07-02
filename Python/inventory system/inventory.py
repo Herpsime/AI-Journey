@@ -101,3 +101,36 @@ def calculate_total_value():
         print(f"• {name}: {qty} units x ${price:.2f} = ${item_value:.2f}")
    
     print(f"TOTAL VALUE: ${total_value:.2f}")
+    
+    
+while True:
+    print("1. Add Product")
+    print("2. Sell Product")
+    print("3. Restock Product")
+    print("4. Search Product")
+    print("5. Calculate Total Value")
+    print("6. Exit")
+        
+    choice = input("Select an option (1-6): ").strip()
+        
+    match choice:
+        case 1:
+            add_product()
+        case 2:
+            sell_product()
+        case 3:
+            restock_product()
+        case 4:
+            search_product()
+        case 5:
+            calculate_total_value()
+        case 6:
+            print("\n exiting system")
+            break
+        case _:
+            print("invalid value")
+            
+    opt=input("do you want to continue y/n").lower()
+        
+    if opt != "y":
+        break
