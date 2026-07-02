@@ -72,7 +72,7 @@ def delete(storage):
             
          return storage  """ 
             
-while true:
+while True:
     choice = int(input("what do you want to do \n 1.add \n 2. search \n 3. delete \n 4. update "))
 
     match choice:
