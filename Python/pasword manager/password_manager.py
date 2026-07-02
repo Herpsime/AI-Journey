@@ -30,10 +30,11 @@ def add(storage):
 
 def search(storage):
     search_web=input("input the web u want to search")
-    if search_web in storage["password"]:
+    result = [i for i in storage["password"] if i["website"] == search_web ]
+    if result:
         search_user =input("enter your username")
-        for i in storage["password"]:
-            if i["username"]==search_user:
+        for i in result:
+            if i["user"]==search_user:
                 print("your password",i["password"])
             else:
                 print("wrong username")
@@ -44,34 +45,40 @@ def search(storage):
 
 def delete(storage):
     delete_web=input("input the web password u want to delete")
-    if delete_web in storage["password"]:
-        for delete_web in storage["password"]:
-            delete={
-                "website":delete_web["website"],
-                "user":delete_web["user"],
-                "password":delete_web["password"]
-                    }
-        storage["password"].clear(delete)
+    
+    exist = any(i["website"] == delete_web for i in storage["password"])
+    if exist:
+        
+        storage["password"] = [i for i in storage["password"] if i["website"] != delete_web]
+        print("deleted successfully")
     else:
         print("no website like that")
         
     return storage
 
-"""def update(storage):
+def update(storage):
     web=input("the web you want to update")
-    up_web = input("enter what you want to update about web if you don't want to update leave a space")
-    up_user = input("enter what you want to update about user if you don't want to update leave a space")
-    up_password = input("enter what you want to update about password if you don't want to update leave a space")
-    updated = {
-        "website":up_web,
-        "user":up_user,
-        "password":up_password
-    }
+    
+    found = False
     for i in storage["password"]:
         if i["website"] == web:
-            
-         return storage  """ 
-            
+            found = True
+            print("edit the details")
+            up_web = input("enter what you want to update (leave blank to skip)").strip().lower()
+            up_user = input("enter what you want to update (leave blank to skip)").strip()
+            up_password = input("enter what you want to update (leave blank to skip)").strip()
+            if up_web:
+                i["website"] = up_web
+            if up_user:
+                i["user"] = up_user
+            if up_password:
+                i["password"] = up_password
+    if not found:
+        print("not found")       
+    return storage   
+ 
+current_storage = storage
+           
 while True:
     choice = int(input("what do you want to do \n 1.add \n 2. search \n 3. delete \n 4. update "))
 
