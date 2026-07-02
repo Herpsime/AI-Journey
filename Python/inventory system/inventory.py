@@ -74,3 +74,15 @@ def restock_product():
         print(f"Restocked  new quantity: {inventory[name]['quantity']}")
     except ValueError:
         print("invalid number entered")
+        
+def search_product():
+    name = input("Enter product name: ").strip()
+    if name:
+        name = name[0].upper() + name[1:].lower()
+        
+    if name in inventory:
+        print(f"   product: {name}")
+        print(f"   Price: ${inventory[name]['price']:.2f}")
+        print(f"   Stock: {inventory[name]['quantity']} units")
+    else:
+        print(" product not found.")
