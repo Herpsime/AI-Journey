@@ -25,3 +25,32 @@ def add_product():
         print("product added successfully")
     except ValueError:
         print("invalid input ")
+
+def sell_product():
+    name = input("Enter product name to sell: ").strip()
+    if name:
+        name = name[0].upper() + name[1:].lower()
+        
+    if name not in inventory:
+        print("product not found")
+        return
+        
+    qty_input = input(f"Enter quantity of {name} to sell: ")
+    try:
+        qty_to_sell = int(qty_input)
+        if qty_to_sell <= 0:
+            print("must sell at least 1 unit.")
+            return
+            
+        current_qty = inventory[name]["quantity"]
+        if qty_to_sell > current_qty:
+            print(f"Not enough stock. Only {current_qty} left.")
+        else:
+            inventory[name]["quantity"] -= qty_to_sell
+            revenue = qty_to_sell * inventory[name]["price"]
+            print(f"Sale successful \n Revenue: ${revenue:.2f}")
+            if inventory[name]["quantity"] == 0:
+                print(f"Warning {name} is now out of stock.")
+    except ValueError:
+        print("invalid value")
+        
