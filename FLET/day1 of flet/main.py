@@ -5,7 +5,7 @@ def main(page: ft.page):
     result = ft.Text(value = "0")
     
     page.add(
-        result,
+        ft.Row(control = [result]),
         ft.Button("AC"),
         ft.Button("+/-"),
         ft.Button("%"),
