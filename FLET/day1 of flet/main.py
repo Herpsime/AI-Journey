@@ -2,7 +2,7 @@ import flet as ft
 
 def main(page: ft.page):
     page.title ="calculator"
-    result = ft.Text(value = "0")
+    result = ft.Text(value = "0", color=ft.Colors.WHITE, size=20)
     
     page.add(
         ft.Row(controls = [result]),
@@ -46,7 +46,17 @@ def main(page: ft.page):
             ]
         )
     )
-    
+    page.add(
+        ft.Container(
+            width = 350,
+            bgcolor=ft.Colors.BLACK,
+            border_radius=ft.BorderRadius.all(20),
+            padding=20,
+            content=ft.Column(
+                controls= []
+            )
+        )
+    )    
     
 if __name__ == "__main__":    
     ft.run(main)
